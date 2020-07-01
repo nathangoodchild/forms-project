@@ -1,0 +1,9 @@
+<label>{{ data.label }}</label>
+<input
+  type="text"
+  [formControl]="formControl"
+  [attr.placeholder]="placeholder"
+  [attr.maxlength]="maxlength"
+  [ngClass]="{ 'is-invalid': isInvalid }"
+/>
+<app-show-errors [control]="formControl" [question]="data"></app-show-errors>

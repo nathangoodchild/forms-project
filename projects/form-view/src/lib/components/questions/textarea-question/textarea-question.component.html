@@ -1,0 +1,8 @@
+<label>{{ data.label }}</label>
+<textarea
+  type="text"
+  [formControl]="formControl"
+  [attr.placeholder]="placeholder"
+  [ngClass]="{ 'is-invalid': isInvalid }"
+></textarea>
+<app-show-errors [control]="formControl" [question]="data"></app-show-errors>

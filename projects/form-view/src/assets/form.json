@@ -1,0 +1,97 @@
+{
+  "heading": "My Form",
+  "questions": [
+    {
+      "id": "firstName",
+      "label": "First name:",
+      "type": "text",
+      "validations": {
+        "required": {
+          "message": "First name is required."
+        },
+        "maxlength": {
+          "length": 10
+        }
+      }
+    },
+    {
+      "id": "lastName",
+      "label": "Last name:",
+      "type": "text",
+      "validations": {
+        "required": {
+          "message": "Last name is required."
+        },
+        "maxlength": {
+          "length": 10
+        }
+      }
+    },
+    {
+      "id": "gender",
+      "label": "Gender:",
+      "type": "dropdown",
+      "optionsUrl": "gender",
+      "validations": {
+        "required": {
+          "message": "Gender is required."
+        }
+      }
+    },
+    {
+      "id": "dateofbirth",
+      "label": "Date of birth:",
+      "type": "date",
+      "validations": {
+        "required": {
+          "message": "Date of birth is required."
+        }
+      }
+    },
+    {
+      "id": "comment",
+      "label": "Comments:",
+      "type": "textarea",
+      "validations": {
+        "maxlength": {
+          "length": 10,
+          "message": "You cannot enter more than 10 characters."
+        }
+      }
+    },
+    {
+      "id": "income",
+      "label": "Monthly Cash Flow",
+      "type": "grid",
+      "columnDefs": [
+        { "headerName": "Month", "field": "month" },
+        {
+          "headerName": "Income",
+          "field": "income",
+          "editable": true,
+          "type": ["currencyColumn"]
+        },
+        {
+          "headerName": "Expenses",
+          "field": "expense",
+          "editable": true,
+          "type": ["currencyColumn"]
+        }
+      ],
+      "rowData": [
+        { "month": "January", "income": "", "expense": "" },
+        { "month": "February", "income": "", "expense": "" },
+        { "month": "March", "income": "", "expense": "" },
+        { "month": "April", "income": "", "expense": "" },
+        { "month": "May", "income": "", "expense": "" },
+        { "month": "June", "income": "", "expense": "" },
+        { "month": "July", "income": "", "expense": "" },
+        { "month": "August", "income": "", "expense": "" },
+        { "month": "September", "income": "", "expense": "" },
+        { "month": "October", "income": "", "expense": "" },
+        { "month": "November", "income": "", "expense": "" },
+        { "month": "December", "income": "", "expense": "" }
+      ]
+    }
+  ]
+}

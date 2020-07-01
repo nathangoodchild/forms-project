@@ -2,5 +2,167 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "form-view": {
+      "projectType": "library",
+      "root": "projects/form-view",
+      "sourceRoot": "projects/form-view/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/form-view/tsconfig.lib.json",
+            "project": "projects/form-view/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/form-view/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/form-view/src/test.ts",
+            "tsConfig": "projects/form-view/tsconfig.spec.json",
+            "karmaConfig": "projects/form-view/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/form-view/tsconfig.lib.json",
+              "projects/form-view/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "form-editor": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/form-editor",
+      "sourceRoot": "projects/form-editor/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/form-editor",
+            "index": "projects/form-editor/src/index.html",
+            "main": "projects/form-editor/src/main.ts",
+            "polyfills": "projects/form-editor/src/polyfills.ts",
+            "tsConfig": "projects/form-editor/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/form-editor/src/favicon.ico",
+              "projects/form-editor/src/assets"
+            ],
+            "styles": [
+              "projects/form-editor/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/form-editor/src/environments/environment.ts",
+                  "with": "projects/form-editor/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "form-editor:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "form-editor:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "form-editor:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/form-editor/src/test.ts",
+            "polyfills": "projects/form-editor/src/polyfills.ts",
+            "tsConfig": "projects/form-editor/tsconfig.spec.json",
+            "karmaConfig": "projects/form-editor/karma.conf.js",
+            "assets": [
+              "projects/form-editor/src/favicon.ico",
+              "projects/form-editor/src/assets"
+            ],
+            "styles": [
+              "projects/form-editor/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/form-editor/tsconfig.app.json",
+              "projects/form-editor/tsconfig.spec.json",
+              "projects/form-editor/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/form-editor/e2e/protractor.conf.js",
+            "devServerTarget": "form-editor:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "form-editor:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "form-view"
 }

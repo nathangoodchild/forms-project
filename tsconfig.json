@@ -14,7 +14,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "paths": {
+      "form-view": [
+        "dist/form-view/form-view",
+        "dist/form-view"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

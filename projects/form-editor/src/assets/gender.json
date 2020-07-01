@@ -1,0 +1,5 @@
+[
+  { "text": "Male", "value": "male" },
+  { "text": "Female", "value": "female" },
+  { "text": "Unspecified", "value": "unspecified" }
+]

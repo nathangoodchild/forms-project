@@ -1,0 +1,10 @@
+<label>{{ data.label }}</label>
+<select [formControl]="formControl" [ngClass]="{ 'is-invalid': isInvalid }">
+  <option *ngIf="isRequired" [ngValue]="null" disabled hidden>
+    {{ placeholder }}
+  </option>
+  <option *ngFor="let option of options" [ngValue]="option">
+    {{ option.text }}
+  </option>
+</select>
+<app-show-errors [control]="formControl" [question]="data"></app-show-errors>
